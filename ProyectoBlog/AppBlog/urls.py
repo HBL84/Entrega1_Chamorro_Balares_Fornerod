@@ -15,7 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from AppBlog.views import (
+    inicio,
+    cantantes,
+    conciertos,
+    albums,
+)
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    path("inicio/", inicio, name="inicio"),
+    path("cantantes/", cantantes, name="cantantes"),
+    path("conciertos/", conciertos, name="conciertos"),
+    path("albums/", albums, name="albums"),
 ]
