@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articulos</title>
+</head>
+
+<body style="background-color: indianred;">
+    <form action="AppBlog/Form_articulos" method="POST">{ %csrf_token %}
+        <p>Articulos :<input type="text" name="articulos"></p>
+        <input type="submit" value="Guardar">
+    </form>
+</body>
+
+</html>
