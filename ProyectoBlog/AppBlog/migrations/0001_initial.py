@@ -7,45 +7,76 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Album',
+            name="Album",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('nombre', models.CharField(max_length=30)),
-                ('cant_temas', models.IntegerField()),
-                ('fecha_de_lanzamiento', models.DateField(null=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("nombre", models.CharField(max_length=30)),
+                ("cant_temas", models.IntegerField()),
+                ("fecha_de_lanzamiento", models.DateField(null=True)),
             ],
         ),
         migrations.CreateModel(
-            name='Articulo',
+            name="Articulo",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('nombre', models.CharField(max_length=30)),
-                ('texto', models.CharField(max_length=1000)),
-                ('fecha', models.DateField(null=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("nombre", models.CharField(max_length=30)),
+                ("texto", models.CharField(max_length=1000)),
+                ("fecha", models.DateField(null=True)),
             ],
         ),
         migrations.CreateModel(
-            name='Cantante',
+            name="Cantante",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('nombre', models.CharField(max_length=30)),
-                ('apellido', models.CharField(max_length=30)),
-                ('fecha_nacimiento', models.DateField(null=True)),
-                ('email', models.EmailField(max_length=254)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("nombre", models.CharField(max_length=30)),
+                ("apellido", models.CharField(max_length=30)),
+                ("fecha_nacimiento", models.DateField(null=True)),
+                ("email", models.EmailField(max_length=254)),
             ],
         ),
         migrations.CreateModel(
-            name='Concierto',
+            name="Concierto",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('nombre', models.CharField(max_length=30)),
-                ('lugar', models.CharField(max_length=30)),
-                ('fecha_de_concierto', models.DateField(null=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("nombre", models.CharField(max_length=30)),
+                ("lugar", models.CharField(max_length=30)),
+                ("fecha_de_concierto", models.DateField(null=True)),
             ],
         ),
     ]

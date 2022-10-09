@@ -1,0 +1,11 @@
+<p>Estamos buscando el nombre: {{ nombre }}</p>
+
+{% if cantantes_encontrados %}
+
+<ul>
+{% for cantantes in cantantes_encontrados %}
+    <li>{{cantantes.nombre}} (nombre {{cantantes.nombre}})</li>
+{% endfor %}
+</ul>
+
+{% endif %}
