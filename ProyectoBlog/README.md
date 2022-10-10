@@ -11,7 +11,7 @@ Se puede ingresar mediante:
 
 http://127.0.0.1:8000/AppBlog/
 
-En la cabecera de la página puede encontrarse la pagina de navegacion con las siguientes opciones:
+En la cabecera de la página puede encontrarse la barra de navegacion con las siguientes opciones:
 
     - Inicio: pagina actualmente visible. http://127.0.0.1:8000/AppBlog/inicio/
 
