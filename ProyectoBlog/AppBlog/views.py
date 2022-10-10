@@ -1,7 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from AppBlog.models import Album, Cantante, Concierto, Articulo
-from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
@@ -27,7 +26,6 @@ def articulos(request):
 def formularios(request):
     return render(request, "AppBlog/formularios.html")
 
-@csrf_exempt
 def procesar_form_album(request):
     if request.method != "POST":
         return render(request, "AppBlog/form_albums.html")
@@ -39,7 +37,6 @@ def procesar_form_album(request):
     album.save()
     return render(request, "AppBlog/inicio.html")
 
-@csrf_exempt
 def procesar_form_cantante(request):
     if request.method != "POST":
         return render(request, "AppBlog/form_cantantes.html")
@@ -53,7 +50,6 @@ def procesar_form_cantante(request):
     cantante.save()
     return render(request, "AppBlog/inicio.html")
 
-@csrf_exempt
 def procesar_form_concierto(request):
     if request.method != "POST":
         return render(request, "AppBlog/form_conciertos.html")
@@ -66,7 +62,6 @@ def procesar_form_concierto(request):
     concierto.save()
     return render(request, "AppBlog/inicio.html")
 
-@csrf_exempt
 def procesar_form_articulo(request):
     if request.method != "POST":
         return render(request, "AppBlog/form_articulos.html")

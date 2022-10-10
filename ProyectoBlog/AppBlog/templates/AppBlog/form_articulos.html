@@ -7,7 +7,7 @@
 <div class="container px-5 my-5">
     <h2 class="display-4" >Ingrese Articulo</h2>
     <br>
-    <form action="/AppBlog/form_articulos/" method="POST">
+    <form action="/AppBlog/form_articulos/" method="POST">{% csrf_token %}
         <div class="mb-3">
             <label class="form-label" for="nombre">Nombre:</label>
             <input class="form-control" name="nombre" type="text" placeholder="Nombre:" data-sb-validations="required" />
