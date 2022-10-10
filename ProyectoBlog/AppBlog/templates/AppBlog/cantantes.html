@@ -6,6 +6,33 @@
 
 <div class="container px-5 my-5">
     <h2 class="display-4" >Cantantes</h2>
+    
+    {% if cantantes_encontrados %}
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Fecha de Nacimiento</th>
+                <th scope="col">Email</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for cantantes in cantantes_encontrados %}
+                <tr>
+                    <th scope="row">{{forloop.counter}}</th>
+                    <td>{{cantantes.nombre}}</td>
+                    <td>{{cantantes.apellido}}</td>
+                    <td>{{cantantes.fecha_nacimiento}}</td>
+                    <td>{{cantantes.email}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No se encontraron cantantes cargados en la base de datos.</p>
+    {% endif %}
 </div>
 
 

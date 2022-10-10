@@ -6,6 +6,33 @@
 
 <div class="container px-5 my-5">
     <h2 class="display-4" >Albums</h2>
+    
+    {% if albums_encontrados %}
+
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Cantidad de Temas</th>
+                <th scope="col">Fecha de Lanzamiento</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for album in albums_encontrados %}
+                <tr>
+                    <th scope="row">{{forloop.counter}}</th>
+                    <td>{{album.nombre}}</td>
+                    <td>{{album.cant_temas}}</td>
+                    <td>{{album.fecha_de_lanzamiento}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No se encontraron albums cargados en la base de datos.</p>
+    {% endif %}
+
 </div>
 
 {% endblock %}

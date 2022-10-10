@@ -10,18 +10,24 @@ def inicio(request):
 
 
 def cantantes(request):
-    return render(request, "AppBlog/cantantes.html")
+    cantantes = Cantante.objects.all()
+    contexto = {"cantantes_encontrados": cantantes}
+    return render(request, "AppBlog/cantantes.html", context=contexto)
 
 def albums(request):
-    return render(request, "AppBlog/albums.html")
-
+    albums = Album.objects.all()
+    contexto = {"albums_encontrados": albums}
+    return render(request, "AppBlog/albums.html", context=contexto)
 
 def conciertos(request):
-    return render(request, "AppBlog/conciertos.html")
-
+    conciertos = Concierto.objects.all()
+    contexto = {"conciertos_encontrados": conciertos}
+    return render(request, "AppBlog/conciertos.html", context=contexto)
 
 def articulos(request):
-    return render(request, "AppBlog/articulos.html")
+    articulos = Articulo.objects.all()
+    contexto = {"articulos_encontrados": articulos}
+    return render(request, "AppBlog/articulos.html", context=contexto)
 
 def formularios(request):
     return render(request, "AppBlog/formularios.html")

@@ -6,8 +6,31 @@
 
 <div class="container px-5 my-5">
     <h2 class="display-4" >Articulos</h2>
+    {% if articulos_encontrados %}
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Texto</th>
+                <th scope="col">Fecha</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for articulo in articulos_encontrados %}
+                <tr>
+                    <th scope="row">{{forloop.counter}}</th>
+                    <td>{{articulo.nombre}}</td>
+                    <td>{{articulo.texto}}</td>
+                    <td>{{articulo.fecha}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No se encontraron articulos cargados en la base de datos.</p>
+    {% endif %}
 </div>
-
 
 {% endblock %}
 

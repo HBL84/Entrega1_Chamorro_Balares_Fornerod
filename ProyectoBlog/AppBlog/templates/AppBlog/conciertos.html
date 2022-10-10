@@ -6,7 +6,31 @@
 
 <div class="container px-5 my-5">
     <h2 class="display-4" >Conciertos</h2>
+    
+    {% if conciertos_encontrados %}
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Lugar</th>
+                <th scope="col">Fecha de Concierto</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for concierto in conciertos_encontrados %}
+                <tr>
+                    <th scope="row">{{forloop.counter}}</th>
+                    <td>{{concierto.nombre}}</td>
+                    <td>{{concierto.lugar}}</td>
+                    <td>{{concierto.fecha_de_concierto}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No se encontraron conciertos cargados en la base de datos.</p>
+    {% endif %}
 </div>
-
 
 {% endblock %}

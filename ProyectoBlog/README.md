@@ -7,28 +7,33 @@ Alumnos:
 
 En nuestro blog, podrán acceder a guardar para luego encontrar información sobre Cantantes, Conciertos, Albums y Artículos.
 
-Los links para acceder a las distintas ventanas dentro de AppBlog, son los siguientes:
+Se puede ingresar mediante:
 
-http://127.0.0.1:8000/AppBlog/inicio/
+http://127.0.0.1:8000/AppBlog/
 
-http://127.0.0.1:8000/AppBlog/cantantes/
+En la cabecera de la página puede encontrarse la pagina de navegacion con las siguientes opciones:
 
-http://127.0.0.1:8000/AppBlog/conciertos/
+    - Inicio: pagina actualmente visible. http://127.0.0.1:8000/AppBlog/inicio/
 
-http://127.0.0.1:8000/AppBlog/albums/
+    - Cantantes: donde podría encontrarse la informacion de los cantantes. http://127.0.0.1:8000/AppBlog/cantantes/
 
-Los links para acceder a los formularios de cada uno de los modelos, son los siguientes (aquí se agregan artículos de interés, ej. pueden gorras, remeras, etc.):
+    - Conciertos: donde podría encontrarse la informacion de los conciertos. http://127.0.0.1:8000/AppBlog/conciertos/
 
-http://127.0.0.1:8000/AppBlog/form_albums/
+    - Albums: donde podría encontrarse la informacion de los conciertos. http://127.0.0.1:8000/AppBlog/albums/
 
-http://127.0.0.1:8000/AppBlog/form_articulos/
+    - Articulos: donde podría encontrarse la informacion de los articulos. http://127.0.0.1:8000/AppBlog/articulos/
 
-http://127.0.0.1:8000/AppBlog/form_cantantes/
+    - Formularios: donde podría encontrarse los formularios para ingresar las entidades anteriores. Esta opción la realizamos a 
+                   los fines de facilitar el acceso a los formularios solicitados en la entrega. Los links para acceder a los formularios de cada uno de los modelos, son los siguientes (aquí se agregan artículos de interés, ej. pueden gorras, remeras, etc.):
+                            - http://127.0.0.1:8000/AppBlog/form_albums/
 
-http://127.0.0.1:8000/AppBlog/form_conciertos/
+                            - http://127.0.0.1:8000/AppBlog/form_articulos/
 
-El link de búsqueda para nombre de cantante es el siguiente:
+                            - http://127.0.0.1:8000/AppBlog/form_cantantes/
 
+                            - http://127.0.0.1:8000/AppBlog/form_conciertos/
+
+    - Busqueda: donde puede realizarse la búsqueda de cantante por nombre. http://127.0.0.1:8000/AppBlog/busqueda/
 
 
 
