@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from AppBlog.models import Album, Cantante, Concierto, Articulo
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
@@ -11,7 +12,6 @@ def inicio(request):
 
 def cantantes(request):
     return render(request, "AppBlog/cantantes.html")
-
 
 def albums(request):
     return render(request, "AppBlog/albums.html")
@@ -24,44 +24,59 @@ def conciertos(request):
 def articulos(request):
     return render(request, "AppBlog/articulos.html")
 
+def formularios(request):
+    return render(request, "AppBlog/formularios.html")
 
-def procesar_formulario(request):
+@csrf_exempt
+def procesar_form_album(request):
     if request.method != "POST":
         return render(request, "AppBlog/form_albums.html")
 
-    album = Album(nombre=request.POST["albums"])
+    album = Album(nombre=request.POST.get("nombreAlbum", "Temp"), 
+                 cant_temas = request.POST.get("cantidadDeTemas", 10),
+                 fecha_de_lanzamiento = request.POST.get("fechaDeLanzamiento", '2020-10-20'))
 
     album.save()
     return render(request, "AppBlog/inicio.html")
 
-
-def procesar_formulario_2(request):
+@csrf_exempt
+def procesar_form_cantante(request):
     if request.method != "POST":
         return render(request, "AppBlog/form_cantantes.html")
 
-    album = Cantante(nombre=request.POST["cantantes"])
+    cantante = Cantante(nombre=request.POST["nombre"],
+                        apellido=request.POST["apellido"],
+                        fecha_nacimiento=request.POST["fecha_de_nacimiento"],
+                        email=request.POST["email"],
+    )
 
-    album.save()
+    cantante.save()
     return render(request, "AppBlog/inicio.html")
 
-
-def procesar_formulario_3(request):
+@csrf_exempt
+def procesar_form_concierto(request):
     if request.method != "POST":
         return render(request, "AppBlog/form_conciertos.html")
 
-    album = Concierto(nombre=request.POST["conciertos"])
+    concierto = Concierto(nombre=request.POST["nombre"],
+                          lugar=request.POST["lugar"],
+                          fecha_de_concierto=request.POST["fechaDelConcierto"]
+    )
 
-    album.save()
+    concierto.save()
     return render(request, "AppBlog/inicio.html")
 
-
-def procesar_formulario_4(request):
+@csrf_exempt
+def procesar_form_articulo(request):
     if request.method != "POST":
         return render(request, "AppBlog/form_articulos.html")
 
-    album = Articulo(nombre=request.POST["articulos"])
+    articulo = Articulo(nombre=request.POST["nombre"],
+                        texto=request.POST["articulo"],
+                        fecha=request.POST["fechaDelArticulo"],
+    )
 
-    album.save()
+    articulo.save()
     return render(request, "AppBlog/inicio.html")
 
 

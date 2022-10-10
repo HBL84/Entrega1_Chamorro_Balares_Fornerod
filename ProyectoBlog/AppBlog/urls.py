@@ -21,12 +21,13 @@ from AppBlog.views import (
     conciertos,
     albums,
     articulos,
-    procesar_formulario,
-    procesar_formulario_2,
-    procesar_formulario_3,
-    procesar_formulario_4,
+    procesar_form_album,
+    procesar_form_cantante,
+    procesar_form_concierto,
+    procesar_form_articulo,
     busqueda,
     buscar,
+    formularios,
 )
 
 
@@ -36,10 +37,11 @@ urlpatterns = [
     path("conciertos/", conciertos, name="conciertos"),
     path("albums/", albums, name="albums"),
     path("articulos/", articulos, name="articulos"),
-    path("form_albums/", procesar_formulario, name="form_albums"),
-    path("form_cantantes/", procesar_formulario_2, name="form_cantantes"),
-    path("form_conciertos/", procesar_formulario_3, name="form_conciertos"),
-    path("form_articulos/", procesar_formulario_4, name="form_articulos"),
+    path("form_albums/", procesar_form_album, name="form_albums"),
+    path("form_cantantes/", procesar_form_cantante, name="form_cantantes"),
+    path("form_conciertos/", procesar_form_concierto, name="form_conciertos"),
+    path("form_articulos/", procesar_form_articulo, name="form_articulos"),
     path("busqueda/", busqueda, name="busqueda"),
     path("buscar/", buscar),
+    path("formularios/", formularios, name="formularios"),
 ]

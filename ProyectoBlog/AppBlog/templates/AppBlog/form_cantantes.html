@@ -1,18 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "AppBlog/padre.html" %}
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cantantes</title>
-</head>
+{% load static %}
 
-<body style="background-color: lightcyan;">
-    <form action="AppBlog/Form_cantantes" method="POST">Ingresá aquí!
-        <p>Cantantes :<input type="text" name="cantantes"></p>
-        <input type="submit" value="Guardar">
+{% block contenidoQueCambia %}
+<div class="container px-5 my-5">
+    <h2 class="display-4" >Ingrese Cantante</h2>
+    <br>
+    <form id="contactForm" action="/AppBlog/form_cantantes/" method="POST">
+        <div class="mb-3">
+            <label class="form-label" for="nombre">Nombre:</label>
+            <input class="form-control" name="nombre" name = "nombre" type="text" placeholder="Nombre:" data-sb-validations="required" />
+            <div class="invalid-feedback" data-sb-feedback="nombre:required">Nombre: is required.</div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="apellido">Apellido:</label>
+            <input class="form-control" name="apellido" type="text" placeholder="Apellido:" data-sb-validations="required" />
+            <div class="invalid-feedback" data-sb-feedback="apellido:required">Apellido: is required.</div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="fecha_de_nacimiento">Fecha de Nacimiento:</label>
+            <input class="form-control" name="fecha_de_nacimiento" type="date" placeholder="Fecha de Nacimiento:" data-sb-validations="required" />
+            <div class="invalid-feedback" data-sb-feedback="fecha_de_nacimiento:required">Fecha de Nacimiento: is required.</div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="email">Email:</label>
+            <input class="form-control" name="email" type="email" placeholder="Email:" data-sb-validations="required,email" />
+            <div class="invalid-feedback" data-sb-feedback="email:required">Email: is required.</div>
+            <div class="invalid-feedback" data-sb-feedback="email:email">Email: Email is not valid.</div>
+        </div>
+        <div class="d-grid">
+            <button class="btn btn-primary btn-lg enabled" id="submitButton" type="submit">Guardar</button>
+        </div>
     </form>
-</body>
+</div>
 
-</html>
+{% endblock %}

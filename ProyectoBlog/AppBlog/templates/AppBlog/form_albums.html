@@ -1,18 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "AppBlog/padre.html" %}
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Albums</title>
-</head>
+{% load static %}
 
-<body style="background-color: lightgreen;">
-    <form action="AppBlog/Form_albums" method="POST">Ingresá aquí!
-        <p>Albums :<input type="text" name="albums"></p>
-        <input type="submit" value="Guardar">
+{% block contenidoQueCambia %}
+
+<div class="container px-5 my-5">
+    <h2 class="display-4" >Ingrese Album</h2>
+    <br>
+    <form action="/AppBlog/form_albums/" method="POST">
+        <div class="mb-3">
+            <label class="form-label" for="nombreAlbum">Nombre Album:</label>
+            <input class="form-control" name="nombreAlbum" type="text" placeholder="Nombre Album:" data-sb-validations="required" />
+            <div class="invalid-feedback" data-sb-feedback="nombreAlbum:required">Nombre Album: is required.</div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="cantidadDeTemas">Cantidad de Temas:</label>
+            <input class="form-control" name="cantidadDeTemas" type="number" placeholder="Cantidad de Temas:" data-sb-validations="required" />
+            <div class="invalid-feedback" data-sb-feedback="cantidadDeTemas:required">Cantidad de Temas: is required.</div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="fechaDeLanzamiento">Fecha de Lanzamiento:</label>
+            <input class="form-control" name="fechaDeLanzamiento" type="date" placeholder="Fecha de Lanzamiento:" data-sb-validations="required" />
+            <div class="invalid-feedback" data-sb-feedback="fechaDeLanzamiento:required">Fecha de Lanzamiento: is required.</div>
+        </div>
+        <div class="d-grid">
+            <button class="btn btn-primary btn-lg enabled" id="submitButton" type="submit">Guardar</button>
+        </div>
     </form>
-</body>
+</div>
 
-</html>
+{% endblock %}
+
+    
+
+
