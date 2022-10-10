@@ -32,7 +32,7 @@ from AppBlog.views import (
 
 
 urlpatterns = [
-    path("inicio/", inicio, name="inicio"),
+    path("", inicio, name="inicio"),
     path("cantantes/", cantantes, name="cantantes"),
     path("conciertos/", conciertos, name="conciertos"),
     path("albums/", albums, name="albums"),
