@@ -24,14 +24,19 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="{% url 'cantantes' %}">Cantantes</a>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'conciertos' %}">Conciertos</a>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'albums' %}">Albums</a>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'articulos' %}">Articulos</a>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'formularios' %}">Formularios</a>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'busqueda' %}">Busqueda</a>
-                        <li class="nav-item"><a class="nav-link" href="#!">Sign Up</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Log In</a></li>
+                        {% if user.is_authenticated %}
+                                    <li class="nav-item"><a class="nav-link" href="{% url 'cantantes' %}">Cantantes</a>
+                                    <li class="nav-item"><a class="nav-link" href="{% url 'conciertos' %}">Conciertos</a>
+                                    <li class="nav-item"><a class="nav-link" href="{% url 'albums' %}">Albums</a>
+                                    <li class="nav-item"><a class="nav-link" href="{% url 'articulos' %}">Articulos</a>
+                                    <li class="nav-item"><a class="nav-link" href="{% url 'formularios' %}">Formularios</a>
+                                    <li class="nav-item"><a class="nav-link" href="{% url 'busqueda' %}">Busqueda</a>
+                                    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+                                    <li class="nav-item"><a class="nav-link">{{user.username}}</a></li>
+                        {% else %}
+                                    <li class="nav-item"><a class="nav-link" href="{% url 'registro' %}">Sign Up</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Log In</a></li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
@@ -42,8 +47,7 @@
             <div class="masthead-content">
                 <div class="container px-5">
                     <h1 class="masthead-heading mb-0">El blog de la música</h1>
-                    <h3 class="masthead-subheading mb-0"> </h3>
-                    <a class="btn btn-primary btn-xl rounded-pill mt-5" href="#scroll">Learn More</a>
+                    <h4 class="masthead-subheading mb-0">Bienvenido</h4>
                 </div>
             </div>
             <div class="bg-circle-1 bg-circle"></div>

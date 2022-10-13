@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.contrib.auth.views import LogoutView
+
 from AppBlog.views import (
     inicio,
     cantantes,
@@ -28,6 +30,8 @@ from AppBlog.views import (
     busqueda,
     buscar,
     formularios,
+    login_request,
+    registro,
 )
 
 
@@ -44,4 +48,7 @@ urlpatterns = [
     path("busqueda/", busqueda, name="busqueda"),
     path("buscar/", buscar),
     path("formularios/", formularios, name="formularios"),
+    path("login/", login_request, name="login"),
+    path("logout/", LogoutView.as_view(template_name="AppBlog/logout.html"), name="logout"),
+    path("registro/", registro, name="registro"),
 ]

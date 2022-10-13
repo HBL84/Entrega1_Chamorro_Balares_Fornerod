@@ -1,6 +1,10 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from AppBlog.models import Album, Cantante, Concierto, Articulo
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth import login, logout, authenticate
+#from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -8,30 +12,35 @@ from AppBlog.models import Album, Cantante, Concierto, Articulo
 def inicio(request):
     return render(request, "AppBlog/inicio.html")
 
-
+@login_required
 def cantantes(request):
     cantantes = Cantante.objects.all()
     contexto = {"cantantes_encontrados": cantantes}
     return render(request, "AppBlog/cantantes.html", context=contexto)
 
+@login_required
 def albums(request):
     albums = Album.objects.all()
     contexto = {"albums_encontrados": albums}
     return render(request, "AppBlog/albums.html", context=contexto)
 
+@login_required
 def conciertos(request):
     conciertos = Concierto.objects.all()
     contexto = {"conciertos_encontrados": conciertos}
     return render(request, "AppBlog/conciertos.html", context=contexto)
 
+@login_required
 def articulos(request):
     articulos = Articulo.objects.all()
     contexto = {"articulos_encontrados": articulos}
     return render(request, "AppBlog/articulos.html", context=contexto)
 
+@login_required
 def formularios(request):
     return render(request, "AppBlog/formularios.html")
 
+@login_required
 def procesar_form_album(request):
     if request.method != "POST":
         return render(request, "AppBlog/form_albums.html")
@@ -43,6 +52,7 @@ def procesar_form_album(request):
     album.save()
     return render(request, "AppBlog/inicio.html")
 
+@login_required
 def procesar_form_cantante(request):
     if request.method != "POST":
         return render(request, "AppBlog/form_cantantes.html")
@@ -56,6 +66,7 @@ def procesar_form_cantante(request):
     cantante.save()
     return render(request, "AppBlog/inicio.html")
 
+@login_required
 def procesar_form_concierto(request):
     if request.method != "POST":
         return render(request, "AppBlog/form_conciertos.html")
@@ -68,6 +79,7 @@ def procesar_form_concierto(request):
     concierto.save()
     return render(request, "AppBlog/inicio.html")
 
+@login_required
 def procesar_form_articulo(request):
     if request.method != "POST":
         return render(request, "AppBlog/form_articulos.html")
@@ -80,11 +92,11 @@ def procesar_form_articulo(request):
     articulo.save()
     return render(request, "AppBlog/inicio.html")
 
-
+@login_required
 def busqueda(request):
     return render(request, "AppBlog/busqueda.html")
 
-
+@login_required
 def buscar(request):
 
     if not request.GET["nombre"]:
@@ -96,3 +108,42 @@ def buscar(request):
         contexto = {"nombre": nombre_a_buscar, "cantantes_encontrados": cantantes}
 
         return render(request, "AppBlog/resultado_busqueda.html", contexto)
+
+
+def login_request(request):
+    if request.method == "POST":
+        form = AuthenticationForm(request, data = request.POST)
+
+        if form.is_valid():
+            usuario = form.cleaned_data.get("username")
+            contra = form.cleaned_data.get("password")
+
+            user = authenticate(username=usuario, password=contra)
+            
+            if user is not None:
+                login(request, user)
+                return render(request, "AppBlog/inicio.html", {"mensaje":f"Bienvenido {usuario}"})
+            else:
+                return render(request, "AppBlog/inicio.html", {"mensaje": "Error, datos incorrectos"})
+
+        else:
+            return render(request, "AppBlog/inicio.html", {"mensaje": "Error, formulario erróneo"})
+    
+    form = AuthenticationForm()
+    
+    return render(request, "AppBlog/login.html", {"form":form})
+
+    
+def registro(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            username_capturado = form.cleaned_data["username"]
+            form.save()
+
+            return render(request, "AppBlog/inicio.html", {"mensaje": f"Usuario: {username_capturado}"})
+
+    else:
+        form = UserCreationForm()
+
+    return render(request, "AppBlog/registro.html", {"form": form})
