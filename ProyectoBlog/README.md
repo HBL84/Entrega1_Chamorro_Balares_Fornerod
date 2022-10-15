@@ -35,7 +35,7 @@ En la cabecera de la página puede encontrarse la barra de navegacion con las si
 
     - Busqueda: donde puede realizarse la búsqueda de cantante por nombre. http://127.0.0.1:8000/AppBlog/busqueda/
 
-
+En Inicio (http://127.0.0.1:8000/AppBlog/inicio/), al seleccionar "Click aquí" en Cantantes, Conciertos, Albums y Artículos, se abre la lista respectiva, pudiéndose Editar y Borrar. Téngase presente que se podrá agregar Cantantes, Conciertos, Albums y Artículos en el formulario correspondiente a cada Clase.
 
 
 
