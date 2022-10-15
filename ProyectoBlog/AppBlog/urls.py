@@ -59,8 +59,8 @@ urlpatterns = [
         name="logout",
     ),
     path("registro/", registro, name="registro"),
-    path("borrar/<pk>", AlbumDelete.as_view(), name="AlbumDelete"),
-    path("borrar/<pk>", ArticuloDelete.as_view(), name="ArticuloDelete"),
-    path("borrar/<pk>", CantanteDelete.as_view(), name="CantanteDelete"),
-    path("borrar/<pk>", ConciertoDelete.as_view(), name="ConciertoDelete"),
+    path("borrar_album/<pk>", AlbumDelete.as_view(), name="AlbumDelete"),
+    path("borrar_articulo/<pk>", ArticuloDelete.as_view(), name="ArticuloDelete"),
+    path("borrar_cantante/<pk>", CantanteDelete.as_view(), name="CantanteDelete"),
+    path("borrar_concierto/<pk>", ConciertoDelete.as_view(), name="ConciertoDelete"),
 ]
