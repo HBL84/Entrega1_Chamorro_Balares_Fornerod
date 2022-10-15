@@ -56,5 +56,5 @@ urlpatterns = [
         name="logout",
     ),
     path("registro/", registro, name="registro"),
-    path("r'borrar/(?P<pk>\d+)^$'", AlbumDelete.as_view(), name="AlbumDelete"),
+    path("borrar/<pk>", AlbumDelete.as_view(), name="AlbumDelete"),
 ]
