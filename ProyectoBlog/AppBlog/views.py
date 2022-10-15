@@ -190,3 +190,21 @@ class AlbumDelete(DeleteView):
 
     model = Album
     success_url = "/AppBlog/albums"
+
+
+class ArticuloDelete(DeleteView):
+
+    model = Articulo
+    success_url = "/AppBlog/articulos"
+
+
+class CantanteDelete(DeleteView):
+
+    model = Cantante
+    success_url = "/AppBlog/cantantes"
+
+
+class ConciertoDelete(DeleteView):
+
+    model = Concierto
+    success_url = "/AppBlog/conciertos"

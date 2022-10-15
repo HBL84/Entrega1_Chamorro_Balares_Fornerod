@@ -19,6 +19,9 @@ from django.contrib.auth.views import LogoutView
 
 from AppBlog.views import (
     AlbumDelete,
+    ArticuloDelete,
+    CantanteDelete,
+    ConciertoDelete,
     inicio,
     cantantes,
     conciertos,
@@ -57,4 +60,7 @@ urlpatterns = [
     ),
     path("registro/", registro, name="registro"),
     path("borrar/<pk>", AlbumDelete.as_view(), name="AlbumDelete"),
+    path("borrar/<pk>", ArticuloDelete.as_view(), name="ArticuloDelete"),
+    path("borrar/<pk>", CantanteDelete.as_view(), name="CantanteDelete"),
+    path("borrar/<pk>", ConciertoDelete.as_view(), name="ConciertoDelete"),
 ]

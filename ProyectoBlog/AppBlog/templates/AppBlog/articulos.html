@@ -5,7 +5,7 @@
 {% block contenidoQueCambia %}
 
 <div class="container px-5 my-5">
-    <h2 class="display-4" >Articulos</h2>
+    <h2 class="display-4" >Artículos</h2>
     {% if articulos_encontrados %}
         <table class="table table-hover">
             <thead>
@@ -14,6 +14,7 @@
                 <th scope="col">Nombre</th>
                 <th scope="col">Texto</th>
                 <th scope="col">Fecha</th>
+                <th scope="col">Borrar</th>
             </tr>
             </thead>
             <tbody>
@@ -23,12 +24,13 @@
                     <td>{{articulo.nombre}}</td>
                     <td>{{articulo.texto}}</td>
                     <td>{{articulo.fecha}}</td>
+                    <td> <a href="{% url 'ArticuloDelete' articulo.id %}">Borrar</a> </td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
     {% else %}
-        <p>No se encontraron articulos cargados en la base de datos.</p>
+        <p>No se encontraron artículos cargados en la base de datos.</p>
     {% endif %}
 </div>
 

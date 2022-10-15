@@ -16,6 +16,7 @@
                 <th scope="col">Apellido</th>
                 <th scope="col">Fecha de Nacimiento</th>
                 <th scope="col">Email</th>
+                <th scope="col">Borrar</th>
             </tr>
             </thead>
             <tbody>
@@ -26,6 +27,7 @@
                     <td>{{cantantes.apellido}}</td>
                     <td>{{cantantes.fecha_nacimiento}}</td>
                     <td>{{cantantes.email}}</td>
+                    <td> <a href="{% url 'CantanteDelete' cantantes.id %}">Borrar</a> </td>
                 </tr>
             {% endfor %}
             </tbody>
