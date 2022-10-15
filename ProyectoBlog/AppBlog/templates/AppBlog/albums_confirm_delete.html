@@ -1,0 +1,14 @@
+
+<body style="background-color: yellowgreen;">
+
+    <form action="" method="POST">{% csrf_token %}
+        <table>
+            ¿Seguro de que quieres borrar el album? {{ object }}
+        </table>
+        <input type="submit" value="Submit">
+    </form>
+
+
+</body>
+</html>
+

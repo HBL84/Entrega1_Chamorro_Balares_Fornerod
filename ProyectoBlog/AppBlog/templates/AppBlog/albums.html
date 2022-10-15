@@ -16,15 +16,17 @@
                 <th scope="col">Nombre</th>
                 <th scope="col">Cantidad de Temas</th>
                 <th scope="col">Fecha de Lanzamiento</th>
+                <th scope="col">Borrar</th>
             </tr>
             </thead>
             <tbody>
             {% for album in albums_encontrados %}
                 <tr>
                     <th scope="row">{{forloop.counter}}</th>
-                    <td>{{album.nombre}}</td>
-                    <td>{{album.cant_temas}}</td>
-                    <td>{{album.fecha_de_lanzamiento}}</td>
+                    <td>{{album.nombre}}</td> 
+                    <td>{{album.cant_temas}}</td> 
+                    <td>{{album.fecha_de_lanzamiento}}</td> 
+                    <td> <a href="{% url 'AlbumDelete' album.id %}">Borrar</a> </td>
                 </tr>
             {% endfor %}
             </tbody>

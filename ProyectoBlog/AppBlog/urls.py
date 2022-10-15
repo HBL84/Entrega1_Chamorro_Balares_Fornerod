@@ -18,6 +18,7 @@ from django.urls import path
 from django.contrib.auth.views import LogoutView
 
 from AppBlog.views import (
+    AlbumDelete,
     inicio,
     cantantes,
     conciertos,
@@ -49,6 +50,11 @@ urlpatterns = [
     path("buscar/", buscar),
     path("formularios/", formularios, name="formularios"),
     path("login/", login_request, name="login"),
-    path("logout/", LogoutView.as_view(template_name="AppBlog/logout.html"), name="logout"),
+    path(
+        "logout/",
+        LogoutView.as_view(template_name="AppBlog/logout.html"),
+        name="logout",
+    ),
     path("registro/", registro, name="registro"),
+    path("r'borrar/(?P<pk>\d+)^$'", AlbumDelete.as_view(), name="AlbumDelete"),
 ]
