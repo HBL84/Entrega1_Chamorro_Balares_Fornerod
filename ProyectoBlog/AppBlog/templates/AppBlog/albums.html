@@ -17,6 +17,7 @@
                 <th scope="col">Cantidad de Temas</th>
                 <th scope="col">Fecha de Lanzamiento</th>
                 <th scope="col">Detalle</th>
+                <th scope="col">Editar</th>
                 <th scope="col">Borrar</th>
             </tr>
             </thead>
@@ -28,6 +29,7 @@
                     <td>{{album.cant_temas}}</td> 
                     <td>{{album.fecha_de_lanzamiento}}</td> 
                     <td> <a href="{% url 'AlbumDetail' album.id %}">Ver</a> </td>
+                    <td> <a href="{% url 'AlbumUpdate' album.id %}">Editar</a> </td>
                     <td> <a href="{% url 'AlbumDelete' album.id %}">Borrar</a> </td>
                 </tr>
             {% endfor %}

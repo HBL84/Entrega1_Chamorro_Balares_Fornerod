@@ -211,7 +211,9 @@ class ConciertoDelete(DeleteView, LoginRequiredMixin):
     model = Concierto
     success_url = "/AppBlog/conciertos"
 
+
 # Detail Views
+
 
 class AlbumDetail(DetailView, LoginRequiredMixin):
 
@@ -237,13 +239,14 @@ class ConciertoDetail(DetailView, LoginRequiredMixin):
     template_name = "AppBlog/concierto_detalle.html"
 
 
-#Listar Views
+# Listar Views
+
 
 class AlbumList(ListView):
     model = Album
     template_name: "AppBlog/albums_lista.html"
 
-    
+
 class CantanteList(ListView):
     model = Cantante
     template_name: "AppBlog/cantantes_lista.html"
@@ -258,7 +261,9 @@ class ArticuloList(ListView):
     model = Articulo
     template_name: "AppBlog/articulos_lista.html"
 
-#Create view
+
+# Create view
+
 
 class AlbumCreacion(CreateView):
     model = Album
@@ -276,14 +281,12 @@ class CantanteCreacion(CreateView):
         return reverse("Cantantelista")
 
 
-
 class ConciertoCreacion(CreateView):
     model = Concierto
     fields = ["fecha", "banda"]
 
     def get_success_url(self):
         return reverse("Conciertolista")
-
 
 
 class ArticuloCreacion(CreateView):
@@ -294,7 +297,7 @@ class ArticuloCreacion(CreateView):
         return reverse("Articulolista")
 
 
-#Update view
+# Update view
 
 
 class AlbumUpdateView(UpdateView):
@@ -327,6 +330,3 @@ class ArticuloUpdateView(UpdateView):
 
     def get_success_url(self):
         return reverse("Articulolista")
-
-
-
