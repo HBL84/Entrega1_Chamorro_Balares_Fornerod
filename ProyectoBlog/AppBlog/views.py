@@ -299,13 +299,13 @@ class ArticuloCreacion(CreateView):
 
 # Update view
 
-
-class AlbumUpdateView(UpdateView):
+class AlbumUpdateView(UpdateView, LoginRequiredMixin):
     model = Album
-    fields = ["nombre", "banda"]
+    #success_url = "AppBlog/albums"
+    fields = ["nombre", "cant_temas", "fecha_de_lanzamiento"]
 
     def get_success_url(self):
-        return reverse("Albumlista")
+        return reverse("albums")
 
 
 class CantanteUpdateView(UpdateView):
