@@ -239,94 +239,36 @@ class ConciertoDetail(DetailView, LoginRequiredMixin):
     template_name = "AppBlog/concierto_detalle.html"
 
 
-# Listar Views
-
-
-class AlbumList(ListView):
-    model = Album
-    template_name: "AppBlog/albums_lista.html"
-
-
-class CantanteList(ListView):
-    model = Cantante
-    template_name: "AppBlog/cantantes_lista.html"
-
-
-class ConciertoList(ListView):
-    model = Concierto
-    template_name: "AppBlog/conciertos_lista.html"
-
-
-class ArticuloList(ListView):
-    model = Articulo
-    template_name: "AppBlog/articulos_lista.html"
-
-
-# Create view
-
-
-class AlbumCreacion(CreateView):
-    model = Album
-    fields = ["nombre", "banda"]
-
-    def get_success_url(self):
-        return reverse("AlbumLista")
-
-
-class CantanteCreacion(CreateView):
-    model = Cantante
-    fields = ["nombre", "banda"]
-
-    def get_success_url(self):
-        return reverse("Cantantelista")
-
-
-class ConciertoCreacion(CreateView):
-    model = Concierto
-    fields = ["fecha", "banda"]
-
-    def get_success_url(self):
-        return reverse("Conciertolista")
-
-
-class ArticuloCreacion(CreateView):
-    model = Articulo
-    fields = ["nombre"]
-
-    def get_success_url(self):
-        return reverse("Articulolista")
-
-
 # Update view
+
 
 class AlbumUpdateView(UpdateView, LoginRequiredMixin):
     model = Album
-    #success_url = "AppBlog/albums"
     fields = ["nombre", "cant_temas", "fecha_de_lanzamiento"]
 
     def get_success_url(self):
         return reverse("albums")
 
 
-class CantanteUpdateView(UpdateView):
-    model = Cantante
-    fields = ["nombre", "banda"]
-
-    def get_success_url(self):
-        return reverse("Cantantelista")
-
-
-class ConciertoUpdateView(UpdateView):
-    model = Concierto
-    fields = ["fecha", "banda"]
-
-    def get_success_url(self):
-        return reverse("Conciertolista")
-
-
-class ArticuloUpdateView(UpdateView):
+class ArticuloUpdateView(UpdateView, LoginRequiredMixin):
     model = Articulo
-    fields = ["nombre", "banda"]
+    fields = ["nombre", "texto", "fecha"]
 
     def get_success_url(self):
-        return reverse("Articulolista")
+        return reverse("articulos")
+
+
+class CantanteUpdateView(UpdateView, LoginRequiredMixin):
+    model = Cantante
+    fields = ["nombre", "apellido", "fecha_nacimiento", "email"]
+
+    def get_success_url(self):
+        return reverse("cantantes")
+
+
+class ConciertoUpdateView(UpdateView, LoginRequiredMixin):
+    model = Concierto
+    fields = ["nombre", "lugar", "fecha_de_concierto"]
+
+    def get_success_url(self):
+        return reverse("conciertos")

@@ -17,6 +17,7 @@
                 <th scope="col">Fecha de Nacimiento</th>
                 <th scope="col">Email</th>
                 <th scope="col">Detalle</th>
+                <th scope="col">Editar</th>
                 <th scope="col">Borrar</th>
             </tr>
             </thead>
@@ -29,6 +30,7 @@
                     <td>{{cantantes.fecha_nacimiento}}</td>
                     <td>{{cantantes.email}}</td>
                     <td> <a href="{% url 'CantanteDetail' cantantes.id %}">Ver</a> </td>
+                    <td> <a href="{% url 'CantanteUpdate' cantantes.id %}">Editar</a> </td>
                     <td> <a href="{% url 'CantanteDelete' cantantes.id %}">Borrar</a> </td>
                 </tr>
             {% endfor %}

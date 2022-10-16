@@ -42,17 +42,9 @@ from AppBlog.views import (
     registro,
 )
 from AppBlog.views import (
-    AlbumCreacion,
-    AlbumList,
     AlbumUpdateView,
-    ArticuloCreacion,
-    ArticuloList,
     ArticuloUpdateView,
-    CantanteCreacion,
-    CantanteList,
     CantanteUpdateView,
-    ConciertoCreacion,
-    ConciertoList,
     ConciertoUpdateView,
 )
 
@@ -85,16 +77,10 @@ urlpatterns = [
     path("detalle_articulo/<pk>", ArticuloDetail.as_view(), name="ArticuloDetail"),
     path("detalle_cantante/<pk>", CantanteDetail.as_view(), name="CantanteDetail"),
     path("detalle_concierto/<pk>", ConciertoDetail.as_view(), name="ConciertoDetail"),
-    path("albums_lista<pk>", AlbumList.as_view(), name="Albumlista"),
-    path("cantantes_lista<pk>", CantanteList.as_view(), name="Cantantelista"),
-    path("albums_lista<pk>", ConciertoList.as_view(), name="Conciertolista"),
-    path("albums_lista<pk>", ArticuloList.as_view(), name="Articulolista"),
-    path("curso-nuevo/", AlbumCreacion.as_view(), name="AlbumNew"),
-    path("curso-nuevo/", CantanteCreacion.as_view(), name="CantanteNew"),
-    path("curso-nuevo/", ConciertoCreacion.as_view(), name="ConciertoNew"),
-    path("curso-nuevo/", ArticuloCreacion.as_view(), name="ArticuloNew"),
     path("editar_album/<pk>", AlbumUpdateView.as_view(), name="AlbumUpdate"),
-    path("editar/<pk>", CantanteUpdateView.as_view(), name="CantanteUpdate"),
-    path("editar/<pk>", ConciertoUpdateView.as_view(), name="ConciertoUpdate"),
-    path("editar/<pk>", ArticuloUpdateView.as_view(), name="ArticuloUpdate"),
+    path("editar_cantante/<pk>", CantanteUpdateView.as_view(), name="CantanteUpdate"),
+    path(
+        "editar_concierto/<pk>", ConciertoUpdateView.as_view(), name="ConciertoUpdate"
+    ),
+    path("editar_articulo/<pk>", ArticuloUpdateView.as_view(), name="ArticuloUpdate"),
 ]

@@ -16,6 +16,7 @@
                 <th scope="col">Lugar</th>
                 <th scope="col">Fecha de Concierto</th>
                 <th scope="col">Detalle</th>
+                <th scope="col">Editar</th>
                 <th scope="col">Borrar</th>
             </tr>
             </thead>
@@ -27,6 +28,7 @@
                     <td>{{concierto.lugar}}</td>
                     <td>{{concierto.fecha_de_concierto}}</td>
                     <td> <a href="{% url 'ConciertoDetail' concierto.id %}">Ver</a> </td>
+                    <td> <a href="{% url 'ConciertoUpdate' concierto.id %}">Editar</a> </td>
                     <td> <a href="{% url 'ConciertoDelete' concierto.id %}">Borrar</a> </td>
                 </tr>
             {% endfor %}

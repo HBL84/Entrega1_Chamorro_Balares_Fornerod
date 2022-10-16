@@ -1,12 +1,18 @@
+{% extends "AppBlog/padre.html" %}
 
-<body style="background-color: pink;">
+{% load static %}
 
+{% block contenidoQueCambia %}
+<div class="container px-5 my-5">
+    <h5 class="display-6" >Actualizar Cantante</h5>
+    <br>
     <form action="" method="POST">{% csrf_token %}
         {{ form.as_p }}
-        
-        <input type="submit" value="Submit" />
+        <div class="d-grid">
+            <button class="btn btn-primary btn-lg enabled" id="submitButton" type="submit">Actualizar</button>
+        </div>
     </form>
 
+</div>
 
-</body>
-</html>
+{% endblock %}
