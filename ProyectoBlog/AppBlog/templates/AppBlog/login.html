@@ -7,6 +7,9 @@
 <div class="container px-5 my-5">
     <h5 class="display-6" >Ingrese usuario y contraseña</h5>
     <br>
+    {% if mensaje %}
+       <p> {{ mensaje }} </p>
+    {% endif %}
     <form action="" method="POST"> {% csrf_token %}
         {{form.as_p}}
         <div class="d-grid">

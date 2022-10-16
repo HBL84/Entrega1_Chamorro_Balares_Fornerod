@@ -1,3 +1,4 @@
+from asyncio.windows_events import NULL
 from django.http import HttpResponse
 from django.shortcuts import render
 from AppBlog.models import Album, Cantante, Concierto, Articulo
@@ -16,7 +17,7 @@ from django.views.generic import (
 from django.views.generic.detail import DetailView
 from django.urls import reverse_lazy, reverse
 
-from AppBlog.forms import UserEditionForm
+from AppBlog.forms import UserRegisterForm, UserEditionForm
 
 
 # Create your views here.
@@ -152,18 +153,18 @@ def login_request(request):
             if user is not None:
                 login(request, user)
                 return render(
-                    request, "AppBlog/inicio.html", {"mensaje": f"Bienvenido {usuario}"}
+                    request, "AppBlog/inicio.html",
                 )
             else:
                 return render(
                     request,
-                    "AppBlog/inicio.html",
-                    {"mensaje": "Error, datos incorrectos"},
+                    "AppBlog/login_error.html",
+                    {"mensaje": "Datos Incorrectos. Intente nuevamente."},
                 )
 
         else:
             return render(
-                request, "AppBlog/inicio.html", {"mensaje": "Error, formulario erróneo"}
+               request, "AppBlog/login_error.html", {"mensaje": "Datos Incorrectos. Intente nuevamente."}
             )
 
     form = AuthenticationForm()
@@ -171,21 +172,21 @@ def login_request(request):
     return render(request, "AppBlog/login.html", {"form": form})
 
 
-def registro(request):
+def register(request):
     if request.method == "POST":
-        form = UserCreationForm(request.POST)
+        form = UserRegisterForm(request.POST)
         if form.is_valid():
             username_capturado = form.cleaned_data["username"]
             form.save()
 
             return render(
                 request,
-                "AppBlog/inicio.html",
+                "AppBlog/registro_ok.html",
                 {"mensaje": f"Usuario: {username_capturado}"},
             )
 
     else:
-        form = UserCreationForm()
+        form = UserRegisterForm()
 
     return render(request, "AppBlog/registro.html", {"form": form})
 
@@ -283,17 +284,24 @@ class ConciertoUpdateView(UpdateView, LoginRequiredMixin):
 def editar_perfil(request):
     user = request.user
 
-    if request.method != "POST":
-        form = UserEditionForm(initial={"username": user.username})
-    else:
-        form = UserCreationForm(request.POST)
+    if request.method == "POST":
+        form = UserEditionForm(request.POST)
         if form.is_valid():
             data = form.cleaned_data
-            user.username = data["username"]
+
+            user.email = data["email"]
             user.password1 = data["password1"]
             user.password2 = data["password2"]
             user.save()
-            return render(request, "AppBlog/inicio.html")
 
-    contexto = {"user": user, "form": form}
+            return render(request, "AppBlog/editarPerfil_ok.html", {"mensaje": f"Usuario: {user.username}"},)
+    
+    else:
+        form = UserEditionForm(initial={"first_name": user.first_name, "last_name": user.last_name,"email": user.email})
+        
+
+    contexto = {
+        "user": user,
+        "form": form
+    }
     return render(request, "AppBlog/editarPerfil.html", contexto)

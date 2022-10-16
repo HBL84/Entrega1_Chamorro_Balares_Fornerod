@@ -39,7 +39,7 @@ from AppBlog.views import (
     buscar,
     formularios,
     login_request,
-    registro,
+    register,
     editar_perfil,
 )
 
@@ -70,7 +70,7 @@ urlpatterns = [
         LogoutView.as_view(template_name="AppBlog/logout.html"),
         name="logout",
     ),
-    path("registro/", registro, name="registro"),
+    path("registro/", register, name="registro"),
     path("borrar_album/<pk>", AlbumDelete.as_view(), name="AlbumDelete"),
     path("borrar_articulo/<pk>", ArticuloDelete.as_view(), name="ArticuloDelete"),
     path("borrar_cantante/<pk>", CantanteDelete.as_view(), name="CantanteDelete"),

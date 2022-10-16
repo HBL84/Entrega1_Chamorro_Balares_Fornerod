@@ -31,7 +31,7 @@
                                     <li class="nav-item"><a class="nav-link" href="{% url 'articulos' %}">Artículos</a>
                                     <li class="nav-item"><a class="nav-link" href="{% url 'busqueda' %}">Búsqueda</a>
                                     <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
-                                    <li class="nav-item"><a class="nav-link">{{user.username}}</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{% url 'EditarPerfil' %}">{{user.username}}</a></li>
                         {% else %}
                                     <li class="nav-item"><a class="nav-link" href="{% url 'registro' %}">Sign Up</a></li>
                                     <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Log In</a></li>
@@ -46,7 +46,9 @@
             <div class="masthead-content">
                 <div class="container px-5">
                     <h1 class="masthead-heading mb-0">El blog de la música</h1>
-                    <h4 class="masthead-subheading mb-0">Bienvenido</h4>
+                    {% if user.is_authenticated %}
+                        <h4 class="masthead-subheading mb-0">Bienvenido {{user.first_name}} {{user.last_name}}</h4>
+                    {% endif %}
                 </div>
             </div>
             <div class="bg-circle-1 bg-circle"></div>
