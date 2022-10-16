@@ -15,6 +15,7 @@
                 <th scope="col">Nombre</th>
                 <th scope="col">Lugar</th>
                 <th scope="col">Fecha de Concierto</th>
+                <th scope="col">Detalle</th>
                 <th scope="col">Borrar</th>
             </tr>
             </thead>
@@ -25,6 +26,7 @@
                     <td>{{concierto.nombre}}</td>
                     <td>{{concierto.lugar}}</td>
                     <td>{{concierto.fecha_de_concierto}}</td>
+                    <td> <a href="{% url 'ConciertoDetail' concierto.id %}">Ver</a> </td>
                     <td> <a href="{% url 'ConciertoDelete' concierto.id %}">Borrar</a> </td>
                 </tr>
             {% endfor %}
@@ -33,6 +35,7 @@
     {% else %}
         <p>No se encontraron conciertos cargados en la base de datos.</p>
     {% endif %}
+    <p><a href="{% url 'form_conciertos' %}"> Ingrese un nuevo concierto.</a></p>
 </div>
 
 {% endblock %}

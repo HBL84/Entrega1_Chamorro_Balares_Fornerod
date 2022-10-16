@@ -3,17 +3,19 @@ from django.shortcuts import render
 from AppBlog.models import Album, Cantante, Concierto, Articulo
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, logout, authenticate
-
-# from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 
 from django.views.generic import (
     ListView,
-    DetailView,
     CreateView,
     UpdateView,
     DeleteView,
 )
+
+from django.views.generic.detail import DetailView
+from django.urls import reverse_lazy
+
 
 # Create your views here.
 
@@ -186,25 +188,50 @@ def registro(request):
     return render(request, "AppBlog/registro.html", {"form": form})
 
 
-class AlbumDelete(DeleteView):
+class AlbumDelete(DeleteView, LoginRequiredMixin):
 
     model = Album
     success_url = "/AppBlog/albums"
 
 
-class ArticuloDelete(DeleteView):
+class ArticuloDelete(DeleteView, LoginRequiredMixin):
 
     model = Articulo
     success_url = "/AppBlog/articulos"
 
 
-class CantanteDelete(DeleteView):
+class CantanteDelete(DeleteView, LoginRequiredMixin):
 
     model = Cantante
     success_url = "/AppBlog/cantantes"
 
 
-class ConciertoDelete(DeleteView):
+class ConciertoDelete(DeleteView, LoginRequiredMixin):
 
     model = Concierto
     success_url = "/AppBlog/conciertos"
+
+# Detail Views
+
+class AlbumDetail(DetailView, LoginRequiredMixin):
+
+    model = Album
+    template_name = "AppBlog/album_detalle.html"
+
+
+class ArticuloDetail(DetailView, LoginRequiredMixin):
+
+    model = Articulo
+    template_name = "AppBlog/articulo_detalle.html"
+
+
+class CantanteDetail(DetailView, LoginRequiredMixin):
+
+    model = Cantante
+    template_name = "AppBlog/cantante_detalle.html"
+
+
+class ConciertoDetail(DetailView, LoginRequiredMixin):
+
+    model = Concierto
+    template_name = "AppBlog/concierto_detalle.html"
