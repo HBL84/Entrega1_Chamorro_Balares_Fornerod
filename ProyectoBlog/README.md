@@ -37,7 +37,7 @@ En la cabecera de la página puede encontrarse la barra de navegacion con las si
 
 En Inicio (http://127.0.0.1:8000/AppBlog/inicio/), al seleccionar "Click aquí" en Cantantes, Conciertos, Albums y Artículos, se abre la lista respectiva, pudiéndose Ver, Editar y Borrar. Téngase presente que se podrá agregar Cantantes, Conciertos, Albums y Artículos en dos maneras diferentes: (i) bajo Cantantes, Conciertos, Albums y Artículos hay un link que permite agregar; y, (ii) en el formulario correspondiente a cada Clase.
 
-
+En http://127.0.0.1:8000/AppBlog/editar_perfil/, se podrá modificar el username.
 
 
 
