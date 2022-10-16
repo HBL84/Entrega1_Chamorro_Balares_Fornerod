@@ -14,7 +14,7 @@ from django.views.generic import (
 )
 
 from django.views.generic.detail import DetailView
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 
 
 # Create your views here.
@@ -235,3 +235,98 @@ class ConciertoDetail(DetailView, LoginRequiredMixin):
 
     model = Concierto
     template_name = "AppBlog/concierto_detalle.html"
+
+
+#Listar Views
+
+class AlbumList(ListView):
+    model = Album
+    template_name: "AppBlog/albums_lista.html"
+
+    
+class CantanteList(ListView):
+    model = Cantante
+    template_name: "AppBlog/cantantes_lista.html"
+
+
+class ConciertoList(ListView):
+    model = Concierto
+    template_name: "AppBlog/conciertos_lista.html"
+
+
+class ArticuloList(ListView):
+    model = Articulo
+    template_name: "AppBlog/articulos_lista.html"
+
+#Create view
+
+class AlbumCreacion(CreateView):
+    model = Album
+    fields = ["nombre", "banda"]
+
+    def get_success_url(self):
+        return reverse("AlbumLista")
+
+
+class CantanteCreacion(CreateView):
+    model = Cantante
+    fields = ["nombre", "banda"]
+
+    def get_success_url(self):
+        return reverse("Cantantelista")
+
+
+
+class ConciertoCreacion(CreateView):
+    model = Concierto
+    fields = ["fecha", "banda"]
+
+    def get_success_url(self):
+        return reverse("Conciertolista")
+
+
+
+class ArticuloCreacion(CreateView):
+    model = Articulo
+    fields = ["nombre"]
+
+    def get_success_url(self):
+        return reverse("Articulolista")
+
+
+#Update view
+
+
+class AlbumUpdateView(UpdateView):
+    model = Album
+    fields = ["nombre", "banda"]
+
+    def get_success_url(self):
+        return reverse("Albumlista")
+
+
+class CantanteUpdateView(UpdateView):
+    model = Cantante
+    fields = ["nombre", "banda"]
+
+    def get_success_url(self):
+        return reverse("Cantantelista")
+
+
+class ConciertoUpdateView(UpdateView):
+    model = Concierto
+    fields = ["fecha", "banda"]
+
+    def get_success_url(self):
+        return reverse("Conciertolista")
+
+
+class ArticuloUpdateView(UpdateView):
+    model = Articulo
+    fields = ["nombre", "banda"]
+
+    def get_success_url(self):
+        return reverse("Articulolista")
+
+
+
