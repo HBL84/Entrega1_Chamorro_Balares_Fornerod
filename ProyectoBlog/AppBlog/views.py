@@ -69,7 +69,7 @@ def procesar_form_album(request):
     )
 
     album.save()
-    return render(request, "AppBlog/inicio.html")
+    return albums(request)
 
 
 @login_required
@@ -85,7 +85,7 @@ def procesar_form_cantante(request):
     )
 
     cantante.save()
-    return render(request, "AppBlog/inicio.html")
+    return cantantes(request)
 
 
 @login_required
@@ -100,7 +100,7 @@ def procesar_form_concierto(request):
     )
 
     concierto.save()
-    return render(request, "AppBlog/inicio.html")
+    return conciertos(request)
 
 
 @login_required
@@ -115,7 +115,7 @@ def procesar_form_articulo(request):
     )
 
     articulo.save()
-    return render(request, "AppBlog/inicio.html")
+    return articulos(request)
 
 
 @login_required
