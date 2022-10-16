@@ -40,7 +40,9 @@ from AppBlog.views import (
     formularios,
     login_request,
     registro,
+    editar_perfil,
 )
+
 from AppBlog.views import (
     AlbumUpdateView,
     ArticuloUpdateView,
@@ -83,4 +85,5 @@ urlpatterns = [
         "editar_concierto/<pk>", ConciertoUpdateView.as_view(), name="ConciertoUpdate"
     ),
     path("editar_articulo/<pk>", ArticuloUpdateView.as_view(), name="ArticuloUpdate"),
+    path("editar_perfil/", editar_perfil, name="EditarPerfil"),
 ]

@@ -16,6 +16,8 @@ from django.views.generic import (
 from django.views.generic.detail import DetailView
 from django.urls import reverse_lazy, reverse
 
+from AppBlog.forms import UserEditionForm
+
 
 # Create your views here.
 
@@ -272,3 +274,26 @@ class ConciertoUpdateView(UpdateView, LoginRequiredMixin):
 
     def get_success_url(self):
         return reverse("conciertos")
+
+
+# Editar Perfil
+
+
+@login_required
+def editar_perfil(request):
+    user = request.user
+
+    if request.method != "POST":
+        form = UserEditionForm(initial={"username": user.username})
+    else:
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            user.username = data["username"]
+            user.password1 = data["password1"]
+            user.password2 = data["password2"]
+            user.save()
+            return render(request, "AppBlog/inicio.html")
+
+    contexto = {"user": user, "form": form}
+    return render(request, "AppBlog/editarPerfil.html", contexto)
