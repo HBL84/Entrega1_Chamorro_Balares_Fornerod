@@ -289,6 +289,8 @@ def editar_perfil(request):
         if form.is_valid():
             data = form.cleaned_data
 
+            user.first_name = data["first_name"]
+            user.last_name = data["last_name"]
             user.email = data["email"]
             user.password1 = data["password1"]
             user.password2 = data["password2"]
