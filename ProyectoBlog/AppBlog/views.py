@@ -191,25 +191,25 @@ def register(request):
     return render(request, "AppBlog/registro.html", {"form": form})
 
 
-class AlbumDelete(DeleteView, LoginRequiredMixin):
+class AlbumDelete(LoginRequiredMixin, DeleteView):
 
     model = Album
     success_url = "/AppBlog/albums"
 
 
-class ArticuloDelete(DeleteView, LoginRequiredMixin):
+class ArticuloDelete(LoginRequiredMixin, DeleteView):
 
     model = Articulo
     success_url = "/AppBlog/articulos"
 
 
-class CantanteDelete(DeleteView, LoginRequiredMixin):
+class CantanteDelete(LoginRequiredMixin, DeleteView):
 
     model = Cantante
     success_url = "/AppBlog/cantantes"
 
 
-class ConciertoDelete(DeleteView, LoginRequiredMixin):
+class ConciertoDelete(LoginRequiredMixin, DeleteView):
 
     model = Concierto
     success_url = "/AppBlog/conciertos"
@@ -218,25 +218,25 @@ class ConciertoDelete(DeleteView, LoginRequiredMixin):
 # Detail Views
 
 
-class AlbumDetail(DetailView, LoginRequiredMixin):
+class AlbumDetail(LoginRequiredMixin, DetailView):
 
     model = Album
     template_name = "AppBlog/album_detalle.html"
 
 
-class ArticuloDetail(DetailView, LoginRequiredMixin):
+class ArticuloDetail(LoginRequiredMixin, DetailView):
 
     model = Articulo
     template_name = "AppBlog/articulo_detalle.html"
 
 
-class CantanteDetail(DetailView, LoginRequiredMixin):
+class CantanteDetail(LoginRequiredMixin, DetailView):
 
     model = Cantante
     template_name = "AppBlog/cantante_detalle.html"
 
 
-class ConciertoDetail(DetailView, LoginRequiredMixin):
+class ConciertoDetail(LoginRequiredMixin, DetailView):
 
     model = Concierto
     template_name = "AppBlog/concierto_detalle.html"
@@ -245,7 +245,7 @@ class ConciertoDetail(DetailView, LoginRequiredMixin):
 # Update view
 
 
-class AlbumUpdateView(UpdateView, LoginRequiredMixin):
+class AlbumUpdateView(LoginRequiredMixin, UpdateView):
     model = Album
     fields = ["nombre", "cant_temas", "fecha_de_lanzamiento"]
 
@@ -253,7 +253,7 @@ class AlbumUpdateView(UpdateView, LoginRequiredMixin):
         return reverse("albums")
 
 
-class ArticuloUpdateView(UpdateView, LoginRequiredMixin):
+class ArticuloUpdateView(LoginRequiredMixin, UpdateView):
     model = Articulo
     fields = ["nombre", "texto", "fecha"]
 
@@ -261,7 +261,7 @@ class ArticuloUpdateView(UpdateView, LoginRequiredMixin):
         return reverse("articulos")
 
 
-class CantanteUpdateView(UpdateView, LoginRequiredMixin):
+class CantanteUpdateView(LoginRequiredMixin, UpdateView):
     model = Cantante
     fields = ["nombre", "apellido", "fecha_nacimiento", "email"]
 
@@ -269,7 +269,7 @@ class CantanteUpdateView(UpdateView, LoginRequiredMixin):
         return reverse("cantantes")
 
 
-class ConciertoUpdateView(UpdateView, LoginRequiredMixin):
+class ConciertoUpdateView(LoginRequiredMixin, UpdateView):
     model = Concierto
     fields = ["nombre", "lugar", "fecha_de_concierto"]
 
