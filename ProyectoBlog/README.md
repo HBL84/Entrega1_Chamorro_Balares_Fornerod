@@ -1,10 +1,25 @@
-# Entrega intermedia Proyecto Final
+# Entrega Proyecto Final
 
 Alumnos:
 * Gustavo Chamarro
 * Henry Balares
 * Guillermo Fornerod
 
+Debajo detallamos lo realizado por cada uno:
+
+* Gustavo Chamarro:
+
+* Henry Balares:
+
+* Guillermo Fornerod:
+
+
+
+
+
+
+
+Esto no lo borro por si lo queremos usar dps
 En nuestro blog, podrán acceder a guardar para luego encontrar información sobre Cantantes, Conciertos, Albums y Artículos.
 
 Se puede ingresar mediante:
