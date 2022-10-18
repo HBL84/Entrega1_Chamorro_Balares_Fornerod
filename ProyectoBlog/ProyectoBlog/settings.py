@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "AppBlog",
+    "AppMsj",
 ]
 
 MIDDLEWARE = [
@@ -58,6 +59,7 @@ TEMPLATES = [
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [
             f"{BASE_DIR}/Entrega1_Chamorro_Balares_Fornerod/ProyectoBlog/AppBlog/templates",
+            f"{BASE_DIR}/Entrega1_Chamorro_Balares_Fornerod/ProyectoBlog/AppMsj/templates",
         ],
         "APP_DIRS": True,
         "OPTIONS": {
