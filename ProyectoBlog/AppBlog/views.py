@@ -67,7 +67,7 @@ def albums(request):
 @login_required
 def conciertos(request):
     conciertos = Concierto.objects.all()
-    return render(request, "AppBlog/conciertos.html", context=contexto)
+    return render(request, "AppBlog/conciertos.html")
 
 
 @login_required
