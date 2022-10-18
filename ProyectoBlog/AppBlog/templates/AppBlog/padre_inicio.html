@@ -31,12 +31,13 @@
                                     <li class="nav-item"><a class="nav-link" href="{% url 'albums' %}">Albums</a>
                                     <li class="nav-item"><a class="nav-link" href="{% url 'articulos' %}">Artículos</a>
                                     <li class="nav-item"><a class="nav-link" href="{% url 'busqueda' %}">Búsqueda</a>
-                                    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="{% url 'EditarPerfil' %}">{{user.username}}</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="{% url 'AgregarAvatar' %}"/a></li>
                                     {% if avatar %}
-                                        <img height="40px" src="{{ avatar }}"/> 
-                                    {% endif %}                                      
+                                        <!--<img height="40px" src="{{ avatar }}"/> -->
+                                        <li class="nav-item"><a class="nav-link" href="{% url 'EditarPerfil' %}"><img class="rounded-circle" src="{{ avatar }}" style="max-width: 2em; margin-right: 10px;"></img>{{user.username}}</a></li>
+                                    {% else%}
+                                        <li class="nav-item"><a class="nav-link" href="{% url 'EditarPerfil' %}">{{user.username}}</a></li>
+                                    {% endif %}
+                                    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
                         {% else %}
                                     <li class="nav-item"><a class="nav-link" href="{% url 'registro' %}">Sign Up</a></li>
                                     <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Log In</a></li>

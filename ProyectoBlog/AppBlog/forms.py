@@ -40,9 +40,9 @@ class UserEditionForm(UserCreationForm):
         help_texts = {k: "" for k in fields}
 
 
-class AvatarForm(forms.ModelForm):
+class AvatarForm(forms.Form):
 
-    imagen = forms.ImageField()
+    imagen = forms.ImageField(required=True)
 
     class Meta:
         model = Avatar

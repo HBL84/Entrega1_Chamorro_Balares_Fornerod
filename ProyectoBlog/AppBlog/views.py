@@ -7,6 +7,9 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 
+#Agregado para avatar
+from django.contrib.auth.models import User
+
 from django.views.generic import (
     ListView,
     CreateView,
@@ -31,14 +34,14 @@ from AppBlog.forms import AvatarForm, UserEditionForm
 # return render(request, "AppBlog/inicio.html")
 
 
-@login_required
 def inicio(request):
-    avatar = Avatar.objects.filter(user=request.user).first()
-    if avatar is not None:
-        contexto = {"avatar": avatar.imagen.url}
-    else:
-        contexto = {}
-
+    contexto = {}
+    
+    if request.user.is_authenticated:
+        avatar = Avatar.objects.filter(user=request.user).first()
+        if avatar is not None:
+            contexto = {"avatar": avatar.imagen.url}
+    
     return render(request, "AppBlog/inicio.html", contexto)
 
 
@@ -49,7 +52,7 @@ def about(request):
 
 @login_required
 def cantantes(request):
-    cantantes = Cantante.objects.all()
+    cantantes = Cantante.objects.all()  
     contexto = {"cantantes_encontrados": cantantes}
     return render(request, "AppBlog/cantantes.html", context=contexto)
 
@@ -64,7 +67,6 @@ def albums(request):
 @login_required
 def conciertos(request):
     conciertos = Concierto.objects.all()
-    contexto = {"conciertos_encontrados": conciertos}
     return render(request, "AppBlog/conciertos.html", context=contexto)
 
 
@@ -148,7 +150,6 @@ def busqueda(request):
 
 @login_required
 def buscar(request):
-
     if not request.GET["nombre"]:
         return HttpResponse("No enviaste datos")
     else:
@@ -340,17 +341,19 @@ def editar_perfil(request):
 
 # Avatar
 
-
 @login_required
 def agregar_avatar(request):
+    user = request.user
+
     if request.method != "POST":
         form = AvatarForm()
     else:
         form = AvatarForm(request.POST, request.FILES)
         if form.is_valid():
-            Avatar.objects.filter(user=request.user).delete()
-            form.save()
-            return render(request, "AppBlog/inicio.html")
+            u = User.objects.get(username=request.user)
+            avatar = Avatar(user=u, imagen=form.cleaned_data['imagen']) 
+            avatar.save()
+            return inicio(request)
 
     contexto = {"form": form}
     return render(request, "AppBlog/avatar_form.html", contexto)

@@ -1,7 +1,7 @@
 from django.urls import path
 
 from AppMsj.views import (
-    messages,
+    mensajes,
 )
 
-urlpatterns = [path("messages/", messages, name="messages")]
+urlpatterns = [path("", mensajes, name="inicio_msj")]
