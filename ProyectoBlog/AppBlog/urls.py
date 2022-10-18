@@ -27,6 +27,7 @@ from AppBlog.views import (
     CantanteDetail,
     ConciertoDetail,
     inicio,
+    about,
     cantantes,
     conciertos,
     albums,
@@ -54,6 +55,7 @@ from AppBlog.views import (
 
 urlpatterns = [
     path("", inicio, name="inicio"),
+    path("about/", about, name="about"),
     path("cantantes/", cantantes, name="cantantes"),
     path("conciertos/", conciertos, name="conciertos"),
     path("albums/", albums, name="albums"),

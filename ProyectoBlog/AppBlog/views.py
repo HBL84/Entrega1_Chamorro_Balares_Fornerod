@@ -43,6 +43,11 @@ def inicio(request):
 
 
 @login_required
+def about(request):
+    return render(request, "AppBlog/about.html")
+
+
+@login_required
 def cantantes(request):
     cantantes = Cantante.objects.all()
     contexto = {"cantantes_encontrados": cantantes}

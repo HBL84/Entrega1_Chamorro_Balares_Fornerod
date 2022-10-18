@@ -25,6 +25,7 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         {% if user.is_authenticated %}
+                                    <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a>
                                     <li class="nav-item"><a class="nav-link" href="{% url 'cantantes' %}">Cantantes</a>
                                     <li class="nav-item"><a class="nav-link" href="{% url 'conciertos' %}">Conciertos</a>
                                     <li class="nav-item"><a class="nav-link" href="{% url 'albums' %}">Albums</a>
