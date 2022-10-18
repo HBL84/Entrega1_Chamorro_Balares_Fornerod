@@ -41,6 +41,7 @@ from AppBlog.views import (
     login_request,
     register,
     editar_perfil,
+    agregar_avatar,
 )
 
 from AppBlog.views import (
@@ -86,4 +87,5 @@ urlpatterns = [
     ),
     path("editar_articulo/<pk>", ArticuloUpdateView.as_view(), name="ArticuloUpdate"),
     path("editar_perfil/", editar_perfil, name="EditarPerfil"),
+    path("agregar_avatar/", agregar_avatar, name="AgregarAvatar"),
 ]

@@ -19,12 +19,27 @@ from django.urls import reverse_lazy, reverse
 
 from AppBlog.forms import UserRegisterForm, UserEditionForm
 
+from AppBlog.models import Avatar
+
+from AppBlog.forms import AvatarForm, UserEditionForm
+
 
 # Create your views here.
 
 
+# def inicio(request):
+# return render(request, "AppBlog/inicio.html")
+
+
+@login_required
 def inicio(request):
-    return render(request, "AppBlog/inicio.html")
+    avatar = Avatar.objects.filter(user=request.user).first()
+    if avatar is not None:
+        contexto = {"avatar": avatar.imagen.url}
+    else:
+        contexto = {}
+
+    return render(request, "AppBlog/inicio.html", contexto)
 
 
 @login_required
@@ -153,7 +168,8 @@ def login_request(request):
             if user is not None:
                 login(request, user)
                 return render(
-                    request, "AppBlog/inicio.html",
+                    request,
+                    "AppBlog/inicio.html",
                 )
             else:
                 return render(
@@ -164,7 +180,9 @@ def login_request(request):
 
         else:
             return render(
-               request, "AppBlog/login_error.html", {"mensaje": "Datos Incorrectos. Intente nuevamente."}
+                request,
+                "AppBlog/login_error.html",
+                {"mensaje": "Datos Incorrectos. Intente nuevamente."},
             )
 
     form = AuthenticationForm()
@@ -296,14 +314,38 @@ def editar_perfil(request):
             user.password2 = data["password2"]
             user.save()
 
-            return render(request, "AppBlog/editarPerfil_ok.html", {"mensaje": f"Usuario: {user.username}"},)
-    
-    else:
-        form = UserEditionForm(initial={"first_name": user.first_name, "last_name": user.last_name,"email": user.email})
-        
+            return render(
+                request,
+                "AppBlog/editarPerfil_ok.html",
+                {"mensaje": f"Usuario: {user.username}"},
+            )
 
-    contexto = {
-        "user": user,
-        "form": form
-    }
+    else:
+        form = UserEditionForm(
+            initial={
+                "first_name": user.first_name,
+                "last_name": user.last_name,
+                "email": user.email,
+            }
+        )
+
+    contexto = {"user": user, "form": form}
     return render(request, "AppBlog/editarPerfil.html", contexto)
+
+
+# Avatar
+
+
+@login_required
+def agregar_avatar(request):
+    if request.method != "POST":
+        form = AvatarForm()
+    else:
+        form = AvatarForm(request.POST, request.FILES)
+        if form.is_valid():
+            Avatar.objects.filter(user=request.user).delete()
+            form.save()
+            return render(request, "AppBlog/inicio.html")
+
+    contexto = {"form": form}
+    return render(request, "AppBlog/avatar_form.html", contexto)
