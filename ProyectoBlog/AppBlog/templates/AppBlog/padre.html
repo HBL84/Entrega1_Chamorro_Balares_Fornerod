@@ -34,9 +34,7 @@
                                     <li class="nav-item"><a class="nav-link" href="{% url 'albums' %}">Albums</a></li>
                                     <li class="nav-item"><a class="nav-link" href="{% url 'articulos' %}">Artículos</a></li>
                                     <li class="nav-item"><a class="nav-link" href="{% url 'busqueda' %}">Búsqueda</a></li>
-                                    {% if avatar %}
-                                        <li class="nav-item"><a><img class="rounded-circle" src="{{ avatar }}" style="max-width: 2em; margin-right: 10px;"></img></a></li>
-                                    {% endif %}
+                                    <li class="nav-item"><a><img class="rounded-circle" src='{{ user.avatar.imagen.url }}' style="max-width: 2em; margin-right: 10px;"></img></a></li>
                                     <li class="nav-item">
                                         <div class="dropdown">
                                             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{user.username}}
@@ -72,6 +70,70 @@
         </header>
 
         {% block contenidoQueCambia %}
+            <!-- Content section 1-->
+            <section id="scroll">
+                <div class="container px-5">
+                    <div class="row gx-5 align-items-center">
+                        <div class="col-lg-6 order-lg-2">
+                            <div class="p-5"><a href="{% url 'cantantes' %}"><img class="img-fluid rounded-circle" src="{% static 'AppBlog/assets/img/01.jpg' %}" alt="..."/></a></div>
+                        </div>
+                        <div class="col-lg-6 order-lg-1">
+                            <div class="p-5">
+                                <h2 class="display-4">Cantantes...</h2>
+                                <p>En esta sección Ud. podrá tener mucha más información de los cantantes incluidos en este blog. <a href="{% url 'cantantes' %}"> Click aquí.</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Content section 2-->
+            <section>
+                <div class="container px-5">
+                    <div class="row gx-5 align-items-center">
+                        <div class="col-lg-6">
+                            <div class="p-5"><a href="{% url 'conciertos' %}"></a><img class="img-fluid rounded-circle" src="{% static 'AppBlog/assets/img/02.jpg' %}" alt="..." /></a></div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="p-5">
+                                <h2 class="display-4">Conciertos...</h2>
+                                <p>En esta sección Ud. podrá tener mucha más información de los conciertos incluidos en este blog. <a href="{% url 'conciertos' %}"> Click aquí.</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Content section 3-->
+            <section>
+                <div class="container px-5">
+                    <div class="row gx-5 align-items-center">
+                        <div class="col-lg-6 order-lg-2">
+                            <div class="p-5"><a href="{% url 'albums' %}"><img class="img-fluid rounded-circle" src="{% static 'AppBlog/assets/img/03.jpg' %}" alt="..." /></a></div>
+                        </div>
+                        <div class="col-lg-6 order-lg-1">
+                            <div class="p-5">
+                                <h2 class="display-4">Albums</h2>
+                                <p>En esta sección Ud. podrá tener mucha más información de los conciertos incluidos en este blog. <a href="{% url 'albums' %}"> Click aquí.</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Content section 4-->
+            <section>
+                <div class="container px-5">
+                    <div class="row gx-5 align-items-center">
+                        <div class="col-lg-6">
+                            <div class="p-5"><a href="{% url 'articulos' %}"></a><img class="img-fluid rounded-circle" src="{% static 'AppBlog/assets/img/04.jpg' %}" alt="..." /></a></div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="p-5">
+                                <h2 class="display-4">Artículos...</h2>
+                                <p>En esta sección Ud. podrá tener mucha más información de los artículos incluidos en este blog. <a href="{% url 'articulos' %}"> Click aquí.</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         {% endblock %}
 
         <!-- Footer-->

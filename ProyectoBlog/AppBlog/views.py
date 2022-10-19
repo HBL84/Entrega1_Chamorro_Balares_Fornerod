@@ -29,20 +29,12 @@ from AppBlog.forms import AvatarForm, UserEditionForm
 
 # Create your views here.
 
-
-# def inicio(request):
-# return render(request, "AppBlog/inicio.html")
-
-
 def inicio(request):
-    contexto = {}
-    
-    if request.user.is_authenticated:
-        avatar = Avatar.objects.filter(user=request.user).first()
-        if avatar is not None:
-            contexto = {"avatar": avatar.imagen.url}
-    
-    return render(request, "AppBlog/inicio.html", contexto)
+    try:
+        avatar = Avatar.objects.get(user=request.user)
+    except:
+        avatar = None
+    return render(request, "AppBlog/padre.html", {"avatar": avatar})
 
 
 @login_required
