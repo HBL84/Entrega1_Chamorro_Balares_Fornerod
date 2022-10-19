@@ -7,7 +7,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 
-#Agregado para avatar
+# Agregado para avatar
 from django.contrib.auth.models import User
 
 from django.views.generic import (
@@ -29,6 +29,7 @@ from AppBlog.forms import AvatarForm, UserEditionForm
 
 # Create your views here.
 
+
 def inicio(request):
     try:
         avatar = Avatar.objects.get(user=request.user)
@@ -44,7 +45,7 @@ def about(request):
 
 @login_required
 def cantantes(request):
-    cantantes = Cantante.objects.all()  
+    cantantes = Cantante.objects.all()
     contexto = {"cantantes_encontrados": cantantes}
     return render(request, "AppBlog/cantantes.html", context=contexto)
 
@@ -333,6 +334,7 @@ def editar_perfil(request):
 
 # Avatar
 
+
 @login_required
 def agregar_avatar(request):
     user = request.user
@@ -343,7 +345,7 @@ def agregar_avatar(request):
         form = AvatarForm(request.POST, request.FILES)
         if form.is_valid():
             u = User.objects.get(username=request.user)
-            avatar = Avatar(user=u, imagen=form.cleaned_data['imagen']) 
+            avatar = Avatar(user=u, imagen=form.cleaned_data["imagen"])
             avatar.save()
             return inicio(request)
 

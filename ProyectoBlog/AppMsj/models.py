@@ -3,5 +3,4 @@ from django.db import models
 
 # Create your models here.
 class Mensajes(models.Model):
-    texto_mensaje = models.CharField(max_length = 40)
-    
+    texto_mensaje = models.CharField(max_length=40)
